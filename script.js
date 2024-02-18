@@ -1,3 +1,5 @@
+const transactionsUl = document.querySelector('#transactions')
+
 const dummyTransactions = [
     { id: 1, name: 'Bolo de brigadeiro', amount: -20 },
     { id: 2, name: 'Salario', amount: 300 },
@@ -15,7 +17,8 @@ const addTransactionIntoDOM = transaction => {
     li.innerHTML = `
         ${transaction.name} <span>${operator} R$ ${amountWithoutOperator}</span><button class="delete-btn">x</button>
     `
-    console.log(li)
+    transactionsUl.prepend(li)
 }
 
 addTransactionIntoDOM(dummyTransactions [0])
+addTransactionIntoDOM(dummyTransactions [1])
