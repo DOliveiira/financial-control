@@ -17,8 +17,18 @@ const addTransactionIntoDOM = transaction => {
     li.innerHTML = `
         ${transaction.name} <span>${operator} R$ ${amountWithoutOperator}</span><button class="delete-btn">x</button>
     `
-    transactionsUl.prepend(li)
+    transactionsUl.append(li)
 }
 
-addTransactionIntoDOM(dummyTransactions [0])
-addTransactionIntoDOM(dummyTransactions [1])
+const updateBalanceValues = () => {
+    const transactionAmounts = dummyTransactions.map(transaction => transaction.amount)
+    const total = transactionAmounts.reduce((acumulator, transaction) => acumulator + transaction, 0).toFixed(2)
+    console.log(total)
+}
+
+const init = () => {
+    dummyTransactions.forEach(addTransactionIntoDOM)
+    updateBalanceValues()
+}
+
+init()
